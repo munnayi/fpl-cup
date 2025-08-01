@@ -1,4 +1,4 @@
-// File: /Users/keiran/code/fpl-cup-full/app/page.tsx
+// File: /Users/keiran/code/fpl-cup/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

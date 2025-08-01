@@ -10,7 +10,7 @@ export default function FooterNav() {
   const pathname = usePathname();
 
   const items = [
-    { href: "/", label: "Rules & Info", icon: faTrophy },
+    { href: "/info", label: "Rules & Info", icon: faTrophy },
     { href: "/fixtures", label: "Fixtures", icon: faCalendar },
     { href: "/table", label: "Table", icon: faTable },
   ];

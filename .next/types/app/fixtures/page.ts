@@ -1,4 +1,4 @@
-// File: /Users/keiran/code/fpl-cup-full/app/fixtures/page.tsx
+// File: /Users/keiran/code/fpl-cup/app/fixtures/page.tsx
 import * as entry from '../../../../app/fixtures/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
