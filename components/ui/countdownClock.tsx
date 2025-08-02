@@ -73,7 +73,7 @@ const CountdownClock: React.FC<CountdownClockProps> = ({
         <CardContent className="space-y-4 p-2 md:p-6">
           <div>
             <Label htmlFor="password" className="text-md text-gray-800 dark:text-white">
-              Name Gman's 15th pick in the 2024/25 draft
+              Name Gman's 11th round pick in the 2024/25 draft
             </Label>
             <Input
               id="password"
