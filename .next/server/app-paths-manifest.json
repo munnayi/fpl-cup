@@ -1,6 +1,4 @@
 {
-  "/table/page": "app/table/page.js",
   "/page": "app/page.js",
-  "/fixtures/page": "app/fixtures/page.js",
-  "/info/page": "app/info/page.js"
+  "/fixtures/page": "app/fixtures/page.js"
 }

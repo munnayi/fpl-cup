@@ -23,7 +23,7 @@ export const teams: Team[] = [
   { name: "KEFM FC",              logo: "/logos/kefm-fc.svg" },
   { name: "Howells Hounds FC",    logo: "/logos/howells-hounds.png" },
   { name: "Voodoo Papa FC",       logo: "/logos/voodoo-papa.svg" },
-  { name: "Konsa-Lation Prize",   logo: "/logos/konsa-lation-prize.jpeg" },
+  { name: "Masterchefs HR Team",   logo: "/logos/masterchefs.png" },
 ];
 
 // Helper map (for reference when reading fixtures)
@@ -35,7 +35,7 @@ const T = {
   E: "KEFM FC",
   F: "Howells Hounds FC",
   G: "Voodoo Papa FC",
-  H: "Konsa-Lation Prize",
+  H: "Masterchefs HR Team",
 } as const;
 
 export const fixtures: Fixture[] = [

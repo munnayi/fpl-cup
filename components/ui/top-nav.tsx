@@ -8,7 +8,7 @@ export default function TopNav() {
   const pathname = usePathname();
 
   const items = [
-    { href: "/info", label: "Rules & Info" },
+    { href: "/", label: "Rules & Info" },
     { href: "/fixtures", label: "Fixtures" },
     { href: "/table", label: "League Table" },
   ];
