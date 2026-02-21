@@ -16,6 +16,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/fixtures/page.js"
     ],
+    "/finals/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/finals/page.js"
+    ],
     "/table/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
