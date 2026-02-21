@@ -1,8 +1,5 @@
 {
-  "/not-found": "app/not-found.js",
   "/finals/page": "app/finals/page.js",
-  "/page": "app/page.js",
-  "/api/cup/status/route": "app/api/cup/status/route.js",
   "/table/page": "app/table/page.js",
-  "/fixtures/page": "app/fixtures/page.js"
+  "/page": "app/page.js"
 }
