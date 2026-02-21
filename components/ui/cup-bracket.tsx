@@ -76,7 +76,7 @@ function MatchCard({
 
       <CardContent className="pb-3">
         <div className="space-y-2">
-          {/* LEFT ROW */}
+          {/* Row 1 */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 min-w-0">
               <TeamAvatar
@@ -96,16 +96,12 @@ function MatchCard({
               )}
             </div>
 
-            <div
-              className={`tabular-nums text-sm ${
-                leftIsWinner ? "font-bold" : ""
-              }`}
-            >
+            <div className={`tabular-nums text-sm ${leftIsWinner ? "font-bold" : ""}`}>
               {hasResult ? leftPts : "—"}
             </div>
           </div>
 
-          {/* RIGHT ROW */}
+          {/* Row 2 */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 min-w-0">
               <TeamAvatar
@@ -125,11 +121,7 @@ function MatchCard({
               )}
             </div>
 
-            <div
-              className={`tabular-nums text-sm ${
-                rightIsWinner ? "font-bold" : ""
-              }`}
-            >
+            <div className={`tabular-nums text-sm ${rightIsWinner ? "font-bold" : ""}`}>
               {hasResult ? rightPts : "—"}
             </div>
           </div>
@@ -150,53 +142,62 @@ export default function MirroredCupBracket({
 }) {
   const championName = championFromFinal(final);
 
+  // ✅ Safe destructuring (fixes Match | undefined errors)
+  const [qf0, qf1, qf2, qf3] = quarterFinals;
+  const [sf0, sf1] = semiFinals;
+
+  // If the bracket isn't fully present, don't render the desktop grid
+  const canRenderDesktop = Boolean(qf0 && qf1 && qf2 && qf3 && sf0 && sf1 && final);
+
   return (
     <div className="w-full overflow-x-auto">
       {/* Desktop mirrored layout */}
       <div className="hidden lg:block">
-        <div className="relative min-w-[1100px]">
-          <div className="grid grid-cols-5 gap-10 items-center relative z-10">
-            {/* LEFT OUTER: QFs */}
-            <div className="flex flex-col gap-6">
-              <h3 className="text-lg font-semibold">QFs</h3>
-              <MatchCard match={quarterFinals[0]} align="left" />
-              <MatchCard match={quarterFinals[1]} align="left" />
-            </div>
-
-            {/* LEFT INNER: SF0 */}
-            <div className="flex flex-col gap-6">
-              <h3 className="text-lg font-semibold">SFs</h3>
-              <div className="mt-16">
-                <MatchCard match={semiFinals[0]} align="left" />
+        {!canRenderDesktop ? (
+          <p className="text-sm text-muted-foreground">
+            Bracket is not available yet.
+          </p>
+        ) : (
+          <div className="relative min-w-[1100px]">
+            <div className="grid grid-cols-5 gap-10 items-center relative z-10">
+              {/* LEFT OUTER: QFs */}
+              <div className="flex flex-col gap-6">
+                <h3 className="text-lg font-semibold">QFs</h3>
+                <MatchCard match={qf0!} align="left" />
+                <MatchCard match={qf1!} align="left" />
               </div>
-            </div>
 
-            {/* CENTER: FINAL */}
-            <div className="flex flex-col gap-6 items-center">
-              <h3 className="text-lg font-semibold">Final</h3>
-              <MatchCard
-                match={final}
-                align="left"
-                championName={championName}
-              />
-            </div>
-
-            {/* RIGHT INNER: SF1 */}
-            <div className="flex flex-col gap-6">
-              <h3 className="text-lg font-semibold text-right">SFs</h3>
-              <div className="mt-16 flex justify-end">
-                <MatchCard match={semiFinals[1]} align="right" />
+              {/* LEFT INNER: SF0 */}
+              <div className="flex flex-col gap-6">
+                <h3 className="text-lg font-semibold">SFs</h3>
+                <div className="mt-16">
+                  <MatchCard match={sf0!} align="left" />
+                </div>
               </div>
-            </div>
 
-            {/* RIGHT OUTER: QFs */}
-            <div className="flex flex-col gap-6 items-end">
-              <h3 className="text-lg font-semibold">QFs</h3>
-              <MatchCard match={quarterFinals[2]} align="right" />
-              <MatchCard match={quarterFinals[3]} align="right" />
+              {/* CENTER: FINAL */}
+              <div className="flex flex-col gap-6 items-center">
+                <h3 className="text-lg font-semibold">Final</h3>
+                <MatchCard match={final} align="left" championName={championName} />
+              </div>
+
+              {/* RIGHT INNER: SF1 */}
+              <div className="flex flex-col gap-6">
+                <h3 className="text-lg font-semibold text-right">SFs</h3>
+                <div className="mt-16 flex justify-end">
+                  <MatchCard match={sf1!} align="right" />
+                </div>
+              </div>
+
+              {/* RIGHT OUTER: QFs */}
+              <div className="flex flex-col gap-6 items-end">
+                <h3 className="text-lg font-semibold">QFs</h3>
+                <MatchCard match={qf2!} align="right" />
+                <MatchCard match={qf3!} align="right" />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Mobile fallback */}
@@ -221,11 +222,7 @@ export default function MirroredCupBracket({
 
         <section>
           <h3 className="text-lg font-semibold mb-3">Final</h3>
-          <MatchCard
-            match={final}
-            align="left"
-            championName={championName}
-          />
+          <MatchCard match={final} align="left" championName={championName} />
         </section>
       </div>
     </div>

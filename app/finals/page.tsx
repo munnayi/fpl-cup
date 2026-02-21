@@ -88,7 +88,7 @@ export default async function FinalsPage() {
     quarterFinals.length === 4 && semiFinals.length === 2 && final != null;
 
   return (
-    <div className="mx-auto p-6 pb-24 max-w-6xl">
+    <div className="mx-auto p-6 pb-24">
       <h1 className="text-2xl md:text-3xl font-bold mb-6">
         <FontAwesomeIcon icon={faFutbol} className="mr-2 text-yellow-500" />
         The Commissioner&apos;s Cup
