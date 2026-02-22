@@ -5,12 +5,12 @@ export type Team = {
 }
 
 export const teams: Team[] = [
-  { name: "Paizão Wade FC", id: 161013, logo: "/logos/paizao-wade-fc.svg" },
-  { name: "Mun United", id: 5249, logo: "/logos/mun-united.png" },
-  { name: "Mun City", id: 4632, logo: "/logos/mun-city.svg" },
-  { name: "Burgenius FC", id: 177183, logo: "/logos/burgenius-fc.svg" },
-  { name: "KEFM FC", id: 49923, logo: "/logos/kefm-fc.svg" },
-  { name: "Howells Hounds FC", id: 177065, logo: "/logos/howells-hounds.png" },
-  { name: "Voodoo Papa FC", id: 177716, logo: "/logos/voodoo-papa.svg" },
-  { name: "Masterchefs HR Team", id: 5074, logo: "/logos/masterchefs.png" },
-]
+  { name: "Paizão Wade FC",        logo: "/logos/paizao-wade-fc.svg", id: 163530 },
+  { name: "Mun United",            logo: "/logos/mun-united.png",     id: 5247 },
+  { name: "Mun City",              logo: "/logos/mun-city.svg",       id: 4631 },
+  { name: "Burgenius FC",          logo: "/logos/burgenius-fc.svg",   id: 179582 },
+  { name: "KEFM FC",               logo: "/logos/kefm-fc.svg",        id: 51540 },
+  { name: "Howells Hounds FC",     logo: "/logos/howells-hounds.png", id: 179465 },
+  { name: "Voodoo Papa FC",        logo: "/logos/voodoo-papa.svg",    id: 180112 },
+  { name: "Masterchefs HR Team",   logo: "/logos/masterchefs.png",    id: 5072 },
+];

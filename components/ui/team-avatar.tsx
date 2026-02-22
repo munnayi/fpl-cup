@@ -2,7 +2,7 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { teams } from "@/lib/data";
+import { teams } from "@/lib/teams";
 import { cn } from "@/lib/utils"; // small classnames helper
 
 type Props = {

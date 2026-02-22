@@ -8,7 +8,7 @@ import {
   faCalendar,
   faTable,
   faTrophy,
-  faHouse,
+  faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import { cn } from "@/lib/utils";
 
@@ -31,12 +31,12 @@ export default function FooterNav() {
   }, []);
 
   const items = [
-    { href: "/", label: "Rules", icon: faHouse },
+    { href: "/", label: "Table", icon: faTable },
     { href: "/fixtures", label: "Fixtures", icon: faCalendar },
     ...(groupComplete
       ? [{ href: "/finals", label: "KO Round", icon: faTrophy }]
       : []),
-    { href: "/table", label: "Table", icon: faTable },
+    { href: "/rules", label: "Rules", icon: faBook },
   ];
 
   return (

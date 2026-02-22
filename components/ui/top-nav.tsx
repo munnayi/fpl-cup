@@ -24,12 +24,12 @@ export default function TopNav() {
   }, [])
 
   const items = [
-    { href: "/", label: "Rules & Info" },
+    { href: "/", label: "League Table" },
     { href: "/fixtures", label: "Fixtures" },
     ...(groupComplete
       ? [{ href: "/finals", label: "Knockout Round" }]
       : []),
-    { href: "/table", label: "League Table" },
+    { href: "/rules", label: "Rules & Info" },  
   ]
 
   return (

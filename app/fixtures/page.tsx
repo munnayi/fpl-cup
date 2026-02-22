@@ -2,7 +2,7 @@
 
 import { generateFullCup } from "@/lib/cup"
 import { generateMockCup } from "@/lib/cup-preview"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFutbol } from "@fortawesome/free-solid-svg-icons"
 import TeamAvatar from "@/components/ui/team-avatar"
@@ -45,9 +45,8 @@ function renderMatch(fixture: any) {
       key={fixture.id ?? `${fixture.stage}-${fixture.home}-${fixture.away}`}
       className="mb-3"
     >
-
       <CardContent className="sm:py-6 py-3">
-        {/* Desktop/tablet: TEAM | SCORE | TEAM (clean + compact) */}
+        {/* Desktop/tablet: TEAM | SCORE | TEAM */}
         <div className="hidden sm:flex items-center gap-4">
           <div className="flex-1 min-w-0">
             <TeamAvatar
@@ -74,7 +73,9 @@ function renderMatch(fixture: any) {
                 </span>
               </div>
             ) : (
-              <span className="text-sm text-muted-foreground">TBC</span>
+              // For LIVE GW we’ll communicate at the header level (GW title),
+              // so this stays neutral.
+              <span className="text-sm text-muted-foreground">—</span>
             )}
           </div>
 
@@ -137,6 +138,11 @@ export default async function FixturesPage() {
 
   const grouped = groupFixturesByGameweek(cup.groupFixtures)
 
+  const { currentGw, currentEventFinished } = cup.meta ?? {
+    currentGw: null,
+    currentEventFinished: true,
+  }
+
   return (
     <div className="max-w-4xl mx-auto p-6 pb-24">
       <h1 className="text-2xl md:text-3xl font-bold mb-6">
@@ -147,21 +153,47 @@ export default async function FixturesPage() {
       <h2 className="text-xl md:text-2xl font-bold mb-6">Fixtures & Results</h2>
 
       {/* GROUP STAGE */}
-      {grouped.map(({ gameweek, fixtures }) => (
-        <section key={gameweek} className="mb-8">
-          <h3 className="text-l md:text-xl font-semibold mb-3">
-            {labelForGameweek(gameweek)}
-          </h3>
-          {fixtures.map(renderMatch)}
-        </section>
-      ))}
+      {grouped.map(({ gameweek, fixtures }) => {
+        const isLiveGw = currentGw === gameweek && !currentEventFinished
+
+        return (
+          <section key={gameweek} className="mb-8">
+            <h3 className="text-l md:text-xl font-semibold mb-3 flex items-center gap-2">
+              {labelForGameweek(gameweek)}
+
+              {isLiveGw && (
+                <span className="flex items-center gap-2 text-red-500 text-sm font-semibold">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
+                  </span>
+                  LIVE
+                </span>
+              )}
+            </h3>
+
+            {fixtures.map(renderMatch)}
+          </section>
+        )
+      })}
 
       {/* QUARTER FINALS */}
       {cup.quarterFinals && (
         <section className="mb-8">
-          <h3 className="text-l md:text-xl font-semibold mb-3">
+          <h3 className="text-l md:text-xl font-semibold mb-3 flex items-center gap-2">
             Quarter Finals (GW36)
+
+            {currentGw === 36 && !currentEventFinished && (
+              <span className="flex items-center gap-2 text-red-500 text-sm font-semibold">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
+                </span>
+                LIVE
+              </span>
+            )}
           </h3>
+
           {cup.quarterFinals.map(renderMatch)}
         </section>
       )}
@@ -169,9 +201,20 @@ export default async function FixturesPage() {
       {/* SEMI FINALS */}
       {cup.semiFinals && (
         <section className="mb-8">
-          <h3 className="text-l md:text-xl font-semibold mb-3">
+          <h3 className="text-l md:text-xl font-semibold mb-3 flex items-center gap-2">
             Semi Finals (GW37)
+
+            {currentGw === 37 && !currentEventFinished && (
+              <span className="flex items-center gap-2 text-red-500 text-sm font-semibold">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
+                </span>
+                LIVE
+              </span>
+            )}
           </h3>
+
           {cup.semiFinals.map(renderMatch)}
         </section>
       )}
@@ -179,7 +222,20 @@ export default async function FixturesPage() {
       {/* FINAL */}
       {cup.final && (
         <section className="mb-8">
-          <h3 className="text-l md:text-xl font-semibold mb-3">Final (GW38)</h3>
+          <h3 className="text-l md:text-xl font-semibold mb-3 flex items-center gap-2">
+            Final (GW38)
+
+            {currentGw === 38 && !currentEventFinished && (
+              <span className="flex items-center gap-2 text-red-500 text-sm font-semibold">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600" />
+                </span>
+                LIVE
+              </span>
+            )}
+          </h3>
+
           {renderMatch(cup.final)}
         </section>
       )}

@@ -16,15 +16,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/fixtures/page.js"
     ],
+    "/finals/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/finals/page.js"
+    ],
     "/table/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/table/page.js"
     ],
-    "/finals/page": [
+    "/rules/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/finals/page.js"
+      "static/chunks/app/rules/page.js"
     ]
   }
 }

@@ -1,5 +1,7 @@
 {
+  "/fixtures/page": "app/fixtures/page.js",
   "/finals/page": "app/finals/page.js",
   "/table/page": "app/table/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/api/cup/status/route": "app/api/cup/status/route.js"
 }
